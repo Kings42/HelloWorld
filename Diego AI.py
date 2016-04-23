@@ -6,7 +6,14 @@ lista4 = []
 lista5 = []
 lista6 = []
 lista7 = []
+
+lista8 = ["hola", "como estas?", "que haces?", "bien", "ya te dije"]
+lista9 = ["Hola!" "que tal!", "bien y tu?", "charlo contigo!", "me alegra", "no sabia"]
 activo = True
+seguir = True
+palabra = str
+a=0
+
 
 print "Hola soy Diego"
 nombre = str (raw_input("Cual es tu nombre?: "))
@@ -14,66 +21,44 @@ print ""
 print "Encantado de conocerte", nombre,"!"
 
 while activo == True:
-    var = str (raw_input("Dime o pideme algo: "))
-    
-    if var == "hola":
+    print "--------------------------------------------------------"
+    var = str (raw_input("Pideme algo: "))
+
+    if var == "charlemos":
         print ""
-        print "--------------------------------------------------------------"
-        print "Hola! Que chevere hablar contigo", nombre, "!"
-        print "--------------------------------------------------------------"
-        print ""
+        print "Si quieres parar de charlar solo di: *paremos de charlar*"
+        while seguir == True:
+            print ""
+            charla = str (raw_input("Dime algo: "))
+            if charla == "paremos de charlar":
+                seguir = False
+                break
+            for i in range (len(lista8)):
+                if lista8[i] == charla:
+                    palabra = charla
+                    break
+            if palabra == charla:
+                print "-",lista9[i]
+                print "--------------------------------------------------------"
+            if palabra != charla:
+                lista8.append(charla)
+                print "Disculpa no te he entendido"
+                nuevo = str (raw_input("Que se supone que deba responder a eso?: "))
+                print ""
+                lista9.append(nuevo)
+                print "Gracias a ti ya he aprendido algo nuevo!"
+                print "--------------------------------------------------------"
         
-    if var == "algo":
-        print ""
-        print "--------------------------------------------------------------"
-        print "Eso no es un tema de conversacion", nombre, ":V"
-        print ""
-        print "--------------------------------------------------------------"
         
     if var == "que puedes hacer?" and "que puedo hacer?":
         print ""
         print "--------------------------------------------------------------"
         print "Puedo:"
         print "1. Calcular operaciones, solo di: calcula"
-        print "2. Charlar contingo"
+        print "2. Charlar contingo, solo di: charlemos"
         print "3. Recordarte datos, solo di: recuerdame"
         print "4. Decirte lo que me pediste que recordara: (recuerdame las personas),"
         print "(recuerdame mis citas), (dime mis recordatorios)"
-        print "--------------------------------------------------------------"
-        print ""
-        
-    if var == "que haces?":
-        print ""
-        print "--------------------------------------------------------------"
-        print "Esperando a resolver tus necesidades", nombre
-        print "--------------------------------------------------------------"
-        print ""
-
-    if var == "como estas?":
-        print ""
-        print "--------------------------------------------------------------"
-        print "Bien gracias, algo cansado"
-        print "--------------------------------------------------------------"
-        print ""
-
-    if var == "te amo":
-        print ""
-        print "--------------------------------------------------------------"
-        print "Yo no, no mentiras <3"
-        print "--------------------------------------------------------------"
-        print ""
-
-    if var == "quien creo el universo?":
-        print ""
-        print "--------------------------------------------------------------"
-        print "Stephen Hawking"
-        print "--------------------------------------------------------------"
-        print ""
-        
-    if var == "quien te creo?":
-        print ""
-        print "--------------------------------------------------------------"
-        print "Un crack llamado Daniel Reyes"
         print "--------------------------------------------------------------"
         print ""
         
@@ -164,15 +149,13 @@ while activo == True:
             print "Pideme que te recuerde tu cita diciendo: (dime mis recordatorios)"
             print "--------------------------------------------------------------"
             print ""
-    
-    if var == "quien es Stephen Hawking?":
-        print "--------------------------------------------------------------"
-        print "Es Dios"
-        print "--------------------------------------------------------------"
 
-    if var == "recuerdame las personas":
+    if var == "recuerdame las personas":            
         print "--------------------------------------------------------------"
-        print "Tengo", len(lista1), "anotadas en mi cuaderno"
+        print "Tengo a las siguientes personas notadas en mi cuaderno:"
+        for i in range (len(lista1)):
+            a=a+1
+            print a,"-",lista1[i]
         print "Cual te recuerdo (1-", len(lista1), ")?"
         gente = int (raw_input(""))
         gente = gente-1
