@@ -6,7 +6,14 @@ lista4 = []
 lista5 = []
 lista6 = []
 lista7 = []
+
+lista8 = ["hola", "como estas?", "que haces?", "bien", "ya te dije"]
+lista9 = ["Hola!" "que tal!", "bien y tu?", "charlo contigo!", "me alegra", "no sabia"]
 activo = True
+seguir = True
+palabra = str
+a=0
+
 
 print "Hola soy Diego"
 nombre = str (raw_input("Cual es tu nombre?: "))
@@ -14,66 +21,44 @@ print ""
 print "Encantado de conocerte", nombre,"!"
 
 while activo == True:
-    var = str (raw_input("Dime o pideme algo: "))
-    
-    if var == "hola":
+    print "--------------------------------------------------------"
+    var = str (raw_input("Pideme algo: "))
+
+    if var == "charlemos":
         print ""
-        print "--------------------------------------------------------------"
-        print "Hola! Que chevere hablar contigo", nombre, "!"
-        print "--------------------------------------------------------------"
-        print ""
+        print "Si quieres parar de charlar solo di: *paremos de charlar*"
+        while seguir == True:
+            print ""
+            charla = str (raw_input("Dime algo: "))
+            if charla == "paremos de charlar":
+                seguir = False
+                break
+            for i in range (len(lista8)):
+                if lista8[i] == charla:
+                    palabra = charla
+                    break
+            if palabra == charla:
+                print "-",lista9[i]
+                print "--------------------------------------------------------"
+            if palabra != charla:
+                lista8.append(charla)
+                print "Disculpa no te he entendido"
+                nuevo = str (raw_input("Que se supone que deba responder a eso?: "))
+                print ""
+                lista9.append(nuevo)
+                print "Gracias a ti ya he aprendido algo nuevo!"
+                print "--------------------------------------------------------"
         
-    if var == "algo":
-        print ""
-        print "--------------------------------------------------------------"
-        print "Eso no es un tema de conversacion", nombre, ":V"
-        print ""
-        print "--------------------------------------------------------------"
         
     if var == "que puedes hacer?" and "que puedo hacer?":
         print ""
         print "--------------------------------------------------------------"
         print "Puedo:"
         print "1. Calcular operaciones, solo di: calcula"
-        print "2. Charlar contingo"
+        print "2. Charlar contingo, solo di: charlemos"
         print "3. Recordarte datos, solo di: recuerdame"
         print "4. Decirte lo que me pediste que recordara: (recuerdame las personas),"
         print "(recuerdame mis citas), (dime mis recordatorios)"
-        print "--------------------------------------------------------------"
-        print ""
-        
-    if var == "que haces?":
-        print ""
-        print "--------------------------------------------------------------"
-        print "Esperando a resolver tus necesidades", nombre
-        print "--------------------------------------------------------------"
-        print ""
-
-    if var == "como estas?":
-        print ""
-        print "--------------------------------------------------------------"
-        print "Bien gracias, algo cansado"
-        print "--------------------------------------------------------------"
-        print ""
-
-    if var == "te amo":
-        print ""
-        print "--------------------------------------------------------------"
-        print "Yo no, no mentiras <3"
-        print "--------------------------------------------------------------"
-        print ""
-
-    if var == "quien creo el universo?":
-        print ""
-        print "--------------------------------------------------------------"
-        print "Stephen Hawking"
-        print "--------------------------------------------------------------"
-        print ""
-        
-    if var == "quien te creo?":
-        print ""
-        print "--------------------------------------------------------------"
-        print "Un crack llamado Daniel Reyes"
         print "--------------------------------------------------------------"
         print ""
         
@@ -164,15 +149,13 @@ while activo == True:
             print "Pideme que te recuerde tu cita diciendo: (dime mis recordatorios)"
             print "--------------------------------------------------------------"
             print ""
-    
-    if var == "quien es Stephen Hawking?":
-        print "--------------------------------------------------------------"
-        print "Es Dios"
-        print "--------------------------------------------------------------"
 
-    if var == "recuerdame las personas":
+    if var == "recuerdame las personas":            
         print "--------------------------------------------------------------"
-        print "Tengo", len(lista1), "anotadas en mi cuaderno"
+        print "Tengo a las siguientes personas notadas en mi cuaderno:"
+        for i in range (len(lista1)):
+            a=a+1
+            print a,"-",lista1[i]
         print "Cual te recuerdo (1-", len(lista1), ")?"
         gente = int (raw_input(""))
         gente = gente-1
@@ -206,6 +189,58 @@ while activo == True:
         print "Dia:", lista7[recordatorios]
         print "--------------------------------------------------------------"
         recordatorios = int (0)
+
+    if var == "ciencia":
+        print "--------------------------------------------------------------"
+        print "Que tipo de ecuaciones deseas resolver?"
+        ciencia = str (raw_input("(relatividad, mecanica cuantica, movimiento, termodinamica): "))
+        if ciencia == "relatividad":
+            print "--------------------------------------------------------------"
+            print "Cual ecuacion quieres resolver?"
+            relatividad = str (raw_input("(dilatacion temporal, contraccion de lorentz, radio de Schwarchirdz): "))
+            if relatividad == "dilatacion temporal":
+                print ""
+                t = float (raw_input("Tiempo de observador en reposo en horas: "))
+                v = float (raw_input("Velocidad del observador en movimiento en km/s: "))
+                c = float (300000.0)
+                var = 0
+                var=v/c
+                var=var*var
+                var=1-var
+                p=var
+                i=0
+                while i!=p:
+                    i=p
+                    p=(var/p+p)/2
+                    resul=t*p
+                print "A", v,"km/s", t, "horas terraqueas se perciben como", resul, "horas."
+                var= 0
+                resul = 0
+                t= 0
+                v= 0
+                c= 0
+            if relatividad == "contraccion de lorentz":
+                print ""
+                l = float (raw_input("Longitud de observador en reposo en metros: "))
+                v = float (raw_input("Velocidad del observador en movimiento en km/s: "))
+                c = float (300000.0)
+                var = 0
+                resul=0
+                var=(v*v)/(c*c)
+                var=1-var
+                p=var
+                i=0
+                while i!=p:
+                    i=p
+                    p=(var/p+p)/2
+                    resul=l*p
+                print "A", v, "km/s", l, "metros terraqueas se perciben como", resul, "metros."
+                var= 0
+                resul = 0
+                l= 0
+                v= 0
+                c= 0
+                
 
     if var == "chao" and "adios" and "nos vemos" and "vemos" and "hasta luego":
         activo=False
